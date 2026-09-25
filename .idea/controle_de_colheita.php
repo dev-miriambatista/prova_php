@@ -1,8 +1,7 @@
 <?php
-echo PHP_EOL;
-echo "===============================================================" . PHP_EOL;
-echo "                  CONTROLE DE COLHEITA                         " . PHP_EOL;
-echo "===============================================================" . PHP_EOL;
+
+echo "================== CONTROLE DE COLHEITA =====================" . PHP_EOL;
+
 
 $idColheita = rand(1000, 9999);
 $dataAtual = date("d/m/Y");
@@ -21,7 +20,7 @@ if ($qtdaProduzida <= 0 || $valor_venda_quilograma <= 0) {
 function lerTexto($mensagem) {
     do {
         $valor = readline($mensagem);
-    } while ($valor === "" || preg_match('/\d/', $valor));
+    } while ($valor === "" || preg_match('/[\d\s]/', $valor));
     return $valor;
 }
 
@@ -65,6 +64,6 @@ function resumo($idColheita, $dataAtual, $responsavel, $qtdaCulturas, $qtdaProdu
     echo "Classificação: " . classificacao($valorProducao) . PHP_EOL;
 }
 
-// chamadas, no final do arquivo:
+
 culturasCadastradas($nomeCultura, $qtdaProduzida, $valor_venda_quilograma, $valorProducao);
 resumo($idColheita, $dataAtual, $responsavel, $qtdaCulturas, $qtdaProduzida, $valorProducao);
